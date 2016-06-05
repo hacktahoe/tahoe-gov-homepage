@@ -1,0 +1,139 @@
+
+
+body {
+  color: #5a5a5a;
+  background:url(file:///Users/Anders/Desktop/TahoeGov/img/Chimney%20Beach%202.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
+
+}
+
+#searchBarID {
+  display: none;
+}
+#wrapperWithoutFooter {
+  min-height:100%;
+  position:relative;
+  min-width: 100%;
+}
+
+#mainContent{
+  padding-bottom: 200px;
+}
+
+select {
+  height: 34px;
+  margin-right: 20px;
+}
+
+.jumbotron {
+   background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+
+.jumbotron .container {
+  height: 40%;
+  width: 30%;
+
+
+    padding-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 5px;
+}
+
+
+.searchBarPaddingDiv{
+  padding-left: 0;
+}
+
+.searchBarAndDropdownRow {
+  padding-top: 100px;
+}
+
+.title{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.menuNav{
+  cursor: pointer;
+}
+
+.bigTitle {
+  color: white;
+  padding-bottom: 20px;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+}
+
+.dropdownOption {
+  margin-top: 20px;
+  float: both;
+  position: relative;
+: -50%;
+  text-align: center;
+
+}
+
+.menuNav {
+/*  height: 100px;*/
+    border-top: 1px solid #3CA8F9;
+     height: 155px;
+}
+
+.btn-success {
+  margin-top: 30px;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+ height: 60px;
+}
+
+
+#custom-bootstrap-menu.navbar-default {
+    font-size: 14px;
+    background-color: rgba(248, 248, 248, 0);
+    border-width: 0px;
+    border-radius: 4px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.searchBar {
+  
+}
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+
+  .container .jumbotron, .container-fluid .jumbotron {
+   padding-right: 0px; 
+    padding-left: 0px;
+ /*   height: 10%;*/
+    width: 60%; 
+}
+  .navbar-wrapper {
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+}
