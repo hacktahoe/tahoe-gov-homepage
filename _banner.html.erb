@@ -112,27 +112,27 @@ function configureDropdowns() {
   //fire this to update secondaryDropdown on load
   // firstDropdown.onchange();
 
-    
+
 	navigation.searchBarUsed = function() {
-	
+
 	    $('.content').hide();
-	
+
 	    $('.newContent').show();
-	
+
 	    newContent = "<div class=\"sideMenu col-xs-3 col-md-2\"><div class=\"menu\"><h5 onclick=\"navigation.menuSelection(jobs)\" class=\"sideMenuLinks h5\">Jobs</h5><h5 onclick=\"navigation.menuSelection(housing)\" class=\"sideMenuLinks h5\">Housing<h5><h5 onclick=\"navigation.menuSelection(forSale)\" class=\"sideMenuLinks h5\">For sale<h5><h5 onclick=\"navigation.menuSelection(personals)\" class=\"sideMenuLinks h5\">Personals<h5><h5 onclick=\"navigation.menuSelection(forums)\" class=\"sideMenuLinks h5\">Forums<h5><h5 onclick=\"navigation.menuSelection(services)\" class=\"sideMenuLinks h5\">Services<h5><h5 onclick=\"navigation.menuSelection(community)\" class=\"sideMenuLinks h5\">Community<h5><h5 onclick=\"navigation.menuSelection(resumes)\" class=\"sideMenuLinks h5\">Resumes<h5></div></div>";
-	
+
 	    newContent = newContent + "<div class=\"col-xs-9 col-md-10 card-group\">";
 	    newContent = newContent + "<h1 class=\"col-xs-12 col-md-12 title\">holiday rentals</h1>";
-	
+
 	    newContent = newContent + "</div>";
 	    $('.newContent').html(newContent);
 	    $('.newContent').show();
 	};
-	
+
 	document.getElementById("searchBarButton").onclick = function() {
 	  navigation.searchBarUsed();
 	};
-	
+
 	document.getElementById("searchBarTextInput").addEventListener( "keydown", function( e ) {
 	    var keyCode = e.keyCode || e.which;
 	    if ( keyCode === 13 ) {
@@ -145,11 +145,11 @@ function configureDropdowns() {
 
 $(function () {
   console.log("inserting banner");
-  
+
   // insert the dropdown banner thingy when the page loads
   var banner_code = $('#banner-code').html();
-  banner_code.insertBefore("#main-outlet");
-  
+  $(banner_code).insertBefore("#main-outlet");
+
   // then initialize the dropdowns that were just inserted
   configureDropdowns();
 });
@@ -159,7 +159,7 @@ $(function () {
 <style>
 
 #homepage-banner {
-  margin-top: 70px;
+  padding-top: 70px;
 }
 
 #searchBarID {
