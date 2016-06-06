@@ -1,0 +1,260 @@
+<script type="text/html" id="banner-code">
+    <div id="homepage-banner">
+		<div id="wrapperWithoutFooter">
+			<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
+				<div class="container-fluid"></div>
+			</div><!-- Center Section w/ search bar
+
+ <!- - Jumbotron - -> <div class="jumbotron"> <!- - <div class="container"> -->
+			<div class="container" align="center">
+				<div class="jumbotron" align="center">
+					<div class="row dropdownOption" align="center">
+						<select id='firstDropdown' name='firstDropdown' class="col-lg-offset-3 col-lg-6 col-xs-3 col-xs-offset-3 col-md-offset-0 col-md-1 btn btn-default">
+							<option value='iAmA' selected='selected'>
+								I am a...
+							</option>
+							<option value='homeowner'>
+								Homeowner
+							</option>
+							<option value='realtor'>
+								Realtor
+							</option>
+							<option value='contractor'>
+								Contractor
+							</option>
+							<option value='consultant'>
+								Consultant
+							</option>
+							<option value='businessOwner'>
+								Business Owner
+							</option>
+							<option value='citizen'>
+								Citizen
+							</option>
+						</select>
+					</div>
+					<div class="row dropdownOption">
+						<select id='secondDropdown' name='secondDropdown' class=" col-lg-6 col-lg-offset-3 col-xs-3 col-md-1 btn btn-default">
+							<option value='iWantTo' selected='selected'>
+								I want to...
+							</option>
+							<option value='checkMyPermitStatus'>
+								check my permit status
+							</option>
+							<option value='removeATree'>
+								remove a tree from my property
+							</option>
+							<option value='somethingElse'>
+								something else?
+							</option>
+						</select>
+					</div>
+					<div class="row dropdownOption col-lg-offset-1 col-lg-10 col-xs-3 col-xs-offset-3 col-md-offset-0 col-md-1" id="searchBarID">
+						<div class="input-group">
+							<div class="input-group-btn search-panel"></div><input type="hidden" name="search_param" value="all" id="search_param"> <input id="searchBarTextInput" type="text" class=" form-control" name="x" placeholder="Search for something else"> <span class="input-group-btn"><button id="searchBarButton" class="btn btn-default" type="button"></button></span>
+						</div>
+					</div>
+					<div class="row">
+						<button type="button" class="btn btn-success col-lg-2 col-lg-offset-5 col-xs-6 col-xs-offset-3 col-md-offset-2 col-md-6">Go!</button>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</script>
+
+
+<script type="text/javascript">
+
+
+// <!-- search bar-
+//  ================================================== -->
+
+  $(document).ready(function(e){
+
+      $('.search-panel .dropdown-menu').find('a').click(function(e) {
+      e.preventDefault();
+      var param = $(this).attr("href").replace("#","");
+      var concept = $(this).text();
+      $('.search-panel span#search_concept').text(concept);
+      $('.input-group #search_param').val(param);
+    });
+  });
+
+
+ //    <!-- secondaryDropdown/firstDropdown dropdowns-
+ // ================================================== -->
+
+(function(){
+
+    var firstDropdownOptions = {
+      'homeowner':['I want to...', 'check my permit status', 'remove a tree', 'something else?'],
+      'realtor':['I want to...', 'search property info', 'submit BMP Disclosure Form','find IPES score','something else?'],
+      'contractor':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
+      'consultant':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
+      'businessOwner':['I want to...', 'file a business permit','submit a permit to update my sign','something else?'],
+      'citizen':['I want to...', 'learn more about Tahoe', 'file a complaint', 'report trash', 'something else?']};
+
+    var firstDropdown = document.getElementById('firstDropdown');
+    var secondaryDropdown = document.getElementById('secondDropdown');
+
+    //on change is a good event for this because we are guarenteed the value is different
+    firstDropdown.onchange = function(){
+        //clear out secondaryDropdown
+        secondaryDropdown.length = 0;
+        //get the selected value from firstDropdown
+        var _val = this.options[this.selectedIndex].value;
+        //loop through index at the selected firstDropdown value
+        for ( var i in firstDropdownOptions[_val]){
+            //create option tag
+            var op = document.createElement('option');
+            //set its value
+            op.value = firstDropdownOptions[_val][i];
+            //set the display label
+            op.text = firstDropdownOptions[_val][i];
+            //append it to secondaryDropdown
+            secondaryDropdown.appendChild(op);
+        }
+    };
+
+
+    secondaryDropdown.onchange = function() {
+         var _val = this.options[this.selectedIndex].value;
+
+         if (_val == "something else?")
+
+           $('searchBarID').show();
+
+         else
+             $('searchBarID').hide();
+    };
+    //fire this to update secondaryDropdown on load
+    // firstDropdown.onchange();
+
+})();
+
+
+
+navigation.searchBarUsed = function() {
+
+    $('.content').hide();
+
+    $('.newContent').show();
+
+    newContent = "<div class=\"sideMenu col-xs-3 col-md-2\"><div class=\"menu\"><h5 onclick=\"navigation.menuSelection(jobs)\" class=\"sideMenuLinks h5\">Jobs</h5><h5 onclick=\"navigation.menuSelection(housing)\" class=\"sideMenuLinks h5\">Housing<h5><h5 onclick=\"navigation.menuSelection(forSale)\" class=\"sideMenuLinks h5\">For sale<h5><h5 onclick=\"navigation.menuSelection(personals)\" class=\"sideMenuLinks h5\">Personals<h5><h5 onclick=\"navigation.menuSelection(forums)\" class=\"sideMenuLinks h5\">Forums<h5><h5 onclick=\"navigation.menuSelection(services)\" class=\"sideMenuLinks h5\">Services<h5><h5 onclick=\"navigation.menuSelection(community)\" class=\"sideMenuLinks h5\">Community<h5><h5 onclick=\"navigation.menuSelection(resumes)\" class=\"sideMenuLinks h5\">Resumes<h5></div></div>";
+
+    newContent = newContent + "<div class=\"col-xs-9 col-md-10 card-group\">";
+    newContent = newContent + "<h1 class=\"col-xs-12 col-md-12 title\">holiday rentals</h1>";
+
+    newContent = newContent + "</div>";
+    $('.newContent').html(newContent);
+    $('.newContent').show();
+};
+
+document.getElementById("searchBarButton").onclick = function() {
+  navigation.searchBarUsed();
+};
+document.getElementById("searchBarTextInput").addEventListener( "keydown", function( e ) {
+    var keyCode = e.keyCode || e.which;
+    if ( keyCode === 13 ) {
+       // enter pressed
+      navigation.searchBarUsed();
+    }
+}, false);
+
+
+
+  // insert the dropdown banner thingy now
+  $(function () {
+    console.log("inserting banner");
+    var banner_code = $('#banner-code').html();
+    banner_code.insertBefore("#main-outlet");
+  });
+</script>
+
+<style>
+
+#homepage-banner {
+  margin-top: 70px;
+}
+
+#searchBarID {
+  display: none;
+}
+#wrapperWithoutFooter {
+  min-height:100%;
+  position:relative;
+  min-width: 100%;
+}
+
+select {
+  height: 34px;
+  margin-right: 20px;
+}
+
+.jumbotron {
+   background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+.jumbotron .container {
+  height: 40%;
+  width: 30%;
+
+
+    padding-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 5px;
+}
+
+
+.searchBarPaddingDiv {
+  padding-left: 0;
+}
+
+.searchBarAndDropdownRow {
+  padding-top: 100px;
+}
+
+.title {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.bigTitle {
+  color: white;
+  padding-bottom: 20px;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 300;
+}
+
+.dropdownOption {
+  margin-top: 20px;
+  float: both;
+  position: relative;
+: -50%;
+  text-align: center;
+
+}
+
+
+.btn-success {
+  margin-top: 30px;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 300;
+ height: 60px;
+}
+
+
+@media (min-width: 768px) {
+  .container .jumbotron, .container-fluid .jumbotron {
+   padding-right: 0px;
+    padding-left: 0px;
+    width: 60%;
+}
+</style>
