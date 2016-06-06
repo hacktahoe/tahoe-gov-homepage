@@ -69,6 +69,7 @@
 function configureDropdowns() {
 
   var firstDropdownOptions = {
+    'iAmA': ['I want to...'],
     'homeowner':['I want to...', 'check my permit status', 'remove a tree', 'something else?'],
     'realtor':['I want to...', 'search property info', 'submit BMP Disclosure Form','find IPES score','something else?'],
     'contractor':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
@@ -85,32 +86,28 @@ function configureDropdowns() {
       secondaryDropdown.length = 0;
       //get the selected value from firstDropdown
       var _val = this.options[this.selectedIndex].value;
-      //loop through index at the selected firstDropdown value
-      for ( var i in firstDropdownOptions[_val]){
-          //create option tag
-          var op = document.createElement('option');
-          //set its value
-          op.value = firstDropdownOptions[_val][i];
-          //set the display label
-          op.text = firstDropdownOptions[_val][i];
-          //append it to secondaryDropdown
-          secondaryDropdown.appendChild(op);
-      }
+      //loop through the needed menu items and append to second dropdown
+      var secondDropdownsMenuItems = firstDropdownOptions[_val];
+      var addThatOption = function(menuItem) {
+        var op = document.createdElement('option');
+        op.value = op.text = menuItem;
+        secondaryDropdown.appendChild(op);
+      };
+      secondDropdownsMenuItems.forEach(addThatOption);
   };
-
 
   secondaryDropdown.onchange = function() {
-       var _val = this.options[this.selectedIndex].value;
-
-       if (_val == "something else?")
-
-         $('searchBarID').show();
-
-       else
-           $('searchBarID').hide();
+		var _val = this.options[this.selectedIndex].value;
+		
+		if (_val == "something else?") {
+		 $('searchBarID').show();
+		} else {
+		 $('searchBarID').hide();
+		}
   };
+  
   //fire this to update secondaryDropdown on load
-  // firstDropdown.onchange();
+  firstDropdown.onchange();
 
 
 	navigation.searchBarUsed = function() {
@@ -157,7 +154,6 @@ $(function () {
 </script>
 
 <style>
-
 #homepage-banner {
   padding-top: 70px;
 }
@@ -181,7 +177,6 @@ select {
   background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
   background: rgba(0, 0, 0, 0.5);
 }
-
 
 .jumbotron .container {
   height: 40%;
