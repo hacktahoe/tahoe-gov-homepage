@@ -89,7 +89,7 @@ function configureDropdowns() {
       //loop through the needed menu items and append to second dropdown
       var secondDropdownsMenuItems = firstDropdownOptions[_val];
       var addThatOption = function(menuItem) {
-        var op = document.createdElement('option');
+        var op = document.createElement('option');
         op.value = op.text = menuItem;
         secondaryDropdown.appendChild(op);
       };
