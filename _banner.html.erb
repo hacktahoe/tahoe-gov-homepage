@@ -66,110 +66,94 @@
 
 <script type="text/javascript">
 
+function configureDropdowns() {
 
-// <!-- search bar-
-//  ================================================== -->
+  var firstDropdownOptions = {
+    'homeowner':['I want to...', 'check my permit status', 'remove a tree', 'something else?'],
+    'realtor':['I want to...', 'search property info', 'submit BMP Disclosure Form','find IPES score','something else?'],
+    'contractor':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
+    'consultant':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
+    'businessOwner':['I want to...', 'file a business permit','submit a permit to update my sign','something else?'],
+    'citizen':['I want to...', 'learn more about Tahoe', 'file a complaint', 'report trash', 'something else?']};
 
-  $(document).ready(function(e){
+  var firstDropdown = document.getElementById('firstDropdown');
+  var secondaryDropdown = document.getElementById('secondDropdown');
 
-      $('.search-panel .dropdown-menu').find('a').click(function(e) {
-      e.preventDefault();
-      var param = $(this).attr("href").replace("#","");
-      var concept = $(this).text();
-      $('.search-panel span#search_concept').text(concept);
-      $('.input-group #search_param').val(param);
-    });
-  });
-
-
- //    <!-- secondaryDropdown/firstDropdown dropdowns-
- // ================================================== -->
-
-(function(){
-
-    var firstDropdownOptions = {
-      'homeowner':['I want to...', 'check my permit status', 'remove a tree', 'something else?'],
-      'realtor':['I want to...', 'search property info', 'submit BMP Disclosure Form','find IPES score','something else?'],
-      'contractor':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
-      'consultant':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
-      'businessOwner':['I want to...', 'file a business permit','submit a permit to update my sign','something else?'],
-      'citizen':['I want to...', 'learn more about Tahoe', 'file a complaint', 'report trash', 'something else?']};
-
-    var firstDropdown = document.getElementById('firstDropdown');
-    var secondaryDropdown = document.getElementById('secondDropdown');
-
-    //on change is a good event for this because we are guarenteed the value is different
-    firstDropdown.onchange = function(){
-        //clear out secondaryDropdown
-        secondaryDropdown.length = 0;
-        //get the selected value from firstDropdown
-        var _val = this.options[this.selectedIndex].value;
-        //loop through index at the selected firstDropdown value
-        for ( var i in firstDropdownOptions[_val]){
-            //create option tag
-            var op = document.createElement('option');
-            //set its value
-            op.value = firstDropdownOptions[_val][i];
-            //set the display label
-            op.text = firstDropdownOptions[_val][i];
-            //append it to secondaryDropdown
-            secondaryDropdown.appendChild(op);
-        }
-    };
+  //on change is a good event for this because we are guarenteed the value is different
+  firstDropdown.onchange = function(){
+      //clear out secondaryDropdown
+      secondaryDropdown.length = 0;
+      //get the selected value from firstDropdown
+      var _val = this.options[this.selectedIndex].value;
+      //loop through index at the selected firstDropdown value
+      for ( var i in firstDropdownOptions[_val]){
+          //create option tag
+          var op = document.createElement('option');
+          //set its value
+          op.value = firstDropdownOptions[_val][i];
+          //set the display label
+          op.text = firstDropdownOptions[_val][i];
+          //append it to secondaryDropdown
+          secondaryDropdown.appendChild(op);
+      }
+  };
 
 
-    secondaryDropdown.onchange = function() {
-         var _val = this.options[this.selectedIndex].value;
+  secondaryDropdown.onchange = function() {
+       var _val = this.options[this.selectedIndex].value;
 
-         if (_val == "something else?")
+       if (_val == "something else?")
 
-           $('searchBarID').show();
+         $('searchBarID').show();
 
-         else
-             $('searchBarID').hide();
-    };
-    //fire this to update secondaryDropdown on load
-    // firstDropdown.onchange();
+       else
+           $('searchBarID').hide();
+  };
+  //fire this to update secondaryDropdown on load
+  // firstDropdown.onchange();
 
-})();
+    
+	navigation.searchBarUsed = function() {
+	
+	    $('.content').hide();
+	
+	    $('.newContent').show();
+	
+	    newContent = "<div class=\"sideMenu col-xs-3 col-md-2\"><div class=\"menu\"><h5 onclick=\"navigation.menuSelection(jobs)\" class=\"sideMenuLinks h5\">Jobs</h5><h5 onclick=\"navigation.menuSelection(housing)\" class=\"sideMenuLinks h5\">Housing<h5><h5 onclick=\"navigation.menuSelection(forSale)\" class=\"sideMenuLinks h5\">For sale<h5><h5 onclick=\"navigation.menuSelection(personals)\" class=\"sideMenuLinks h5\">Personals<h5><h5 onclick=\"navigation.menuSelection(forums)\" class=\"sideMenuLinks h5\">Forums<h5><h5 onclick=\"navigation.menuSelection(services)\" class=\"sideMenuLinks h5\">Services<h5><h5 onclick=\"navigation.menuSelection(community)\" class=\"sideMenuLinks h5\">Community<h5><h5 onclick=\"navigation.menuSelection(resumes)\" class=\"sideMenuLinks h5\">Resumes<h5></div></div>";
+	
+	    newContent = newContent + "<div class=\"col-xs-9 col-md-10 card-group\">";
+	    newContent = newContent + "<h1 class=\"col-xs-12 col-md-12 title\">holiday rentals</h1>";
+	
+	    newContent = newContent + "</div>";
+	    $('.newContent').html(newContent);
+	    $('.newContent').show();
+	};
+	
+	document.getElementById("searchBarButton").onclick = function() {
+	  navigation.searchBarUsed();
+	};
+	
+	document.getElementById("searchBarTextInput").addEventListener( "keydown", function( e ) {
+	    var keyCode = e.keyCode || e.which;
+	    if ( keyCode === 13 ) {
+	       // enter pressed
+	      navigation.searchBarUsed();
+	    }
+	}, false);
 
+}
 
+$(function () {
+  console.log("inserting banner");
+  
+  // insert the dropdown banner thingy when the page loads
+  var banner_code = $('#banner-code').html();
+  banner_code.insertBefore("#main-outlet");
+  
+  // then initialize the dropdowns that were just inserted
+  configureDropdowns();
+});
 
-navigation.searchBarUsed = function() {
-
-    $('.content').hide();
-
-    $('.newContent').show();
-
-    newContent = "<div class=\"sideMenu col-xs-3 col-md-2\"><div class=\"menu\"><h5 onclick=\"navigation.menuSelection(jobs)\" class=\"sideMenuLinks h5\">Jobs</h5><h5 onclick=\"navigation.menuSelection(housing)\" class=\"sideMenuLinks h5\">Housing<h5><h5 onclick=\"navigation.menuSelection(forSale)\" class=\"sideMenuLinks h5\">For sale<h5><h5 onclick=\"navigation.menuSelection(personals)\" class=\"sideMenuLinks h5\">Personals<h5><h5 onclick=\"navigation.menuSelection(forums)\" class=\"sideMenuLinks h5\">Forums<h5><h5 onclick=\"navigation.menuSelection(services)\" class=\"sideMenuLinks h5\">Services<h5><h5 onclick=\"navigation.menuSelection(community)\" class=\"sideMenuLinks h5\">Community<h5><h5 onclick=\"navigation.menuSelection(resumes)\" class=\"sideMenuLinks h5\">Resumes<h5></div></div>";
-
-    newContent = newContent + "<div class=\"col-xs-9 col-md-10 card-group\">";
-    newContent = newContent + "<h1 class=\"col-xs-12 col-md-12 title\">holiday rentals</h1>";
-
-    newContent = newContent + "</div>";
-    $('.newContent').html(newContent);
-    $('.newContent').show();
-};
-
-document.getElementById("searchBarButton").onclick = function() {
-  navigation.searchBarUsed();
-};
-document.getElementById("searchBarTextInput").addEventListener( "keydown", function( e ) {
-    var keyCode = e.keyCode || e.which;
-    if ( keyCode === 13 ) {
-       // enter pressed
-      navigation.searchBarUsed();
-    }
-}, false);
-
-
-
-  // insert the dropdown banner thingy now
-  $(function () {
-    console.log("inserting banner");
-    var banner_code = $('#banner-code').html();
-    banner_code.insertBefore("#main-outlet");
-  });
 </script>
 
 <style>
@@ -181,6 +165,7 @@ document.getElementById("searchBarTextInput").addEventListener( "keydown", funct
 #searchBarID {
   display: none;
 }
+
 #wrapperWithoutFooter {
   min-height:100%;
   position:relative;
@@ -193,22 +178,20 @@ select {
 }
 
 .jumbotron {
-   background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
-    background: rgba(0, 0, 0, 0.5);
+  background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
+  background: rgba(0, 0, 0, 0.5);
 }
 
 
 .jumbotron .container {
   height: 40%;
   width: 30%;
-
-
-    padding-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    padding-right: 0;
-    margin-bottom: 5px;
+  padding-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 5px;
 }
 
 
@@ -228,17 +211,15 @@ select {
 .bigTitle {
   color: white;
   padding-bottom: 20px;
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-   font-weight: 300;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 }
 
 .dropdownOption {
   margin-top: 20px;
   float: both;
   position: relative;
-: -50%;
   text-align: center;
-
 }
 
 
