@@ -1,0 +1,78 @@
+/*<!-- This div doesn't do anything and can be deleted: 
+
+	<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
+				<div class="container-fluid"></div>
+			</div>
+ -->*/
+
+
+/*<!--In the javascript, the text of the option: "Something else?" should be improved. Perhaps "something else..." ;
+
+/*<!--
+
+The html in the div wrapperWithoutFooter should be replaced with the following:  
+Also, note the addition of the responsive image class to the div tag.
+
+
+The background image is a placeholder. 
+
+<div id="wrapperWithoutFooter" class="img-responsive" style="
+    background-image: url('https://www.enviroaccounting.com/TahoeTMDL/FileResource/GetFileResourceForProgram/2dbee84f-5583-469b-b1fd-594b2c720e15');
+    padding-top: 110px;
+    padding-bottom: 110px;
+    margin-bottom: -60px;
+    margin-top: -20px;
+    margin-left: 0px;
+    margin-right: 0px;
+"> 
+
+-->*/
+
+/*The following should be added or replaced in the current css*/
+
+
+#wrapperWithoutFooter {
+
+
+/*Image size on full desktop HD is : 1600x520    */
+	background-image: url('https://www.enviroaccounting.com/TahoeTMDL/FileResource/GetFileResourceForProgram/2dbee84f-5583-469b-b1fd-594b2c720e15');
+    padding-top: 110px;
+    padding-bottom: 110px;
+    margin-bottom: -60px;
+    margin-top: -20px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+
+}
+
+.jumbotron {
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 500px;
+
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+
+@media \0screen {
+  img { 
+  	width: auto; /* for ie 8 */
+  }
+}
+
+
+/*responsive settings for iPhone*/
+/*Can add additional responsive settings for different devices if needed*/
+
+@media (min-width: 414px) {
+  .container .jumbotron, .container-fluid .jumbotron {
+   padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+}
