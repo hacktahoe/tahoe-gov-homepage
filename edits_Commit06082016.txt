@@ -13,18 +13,10 @@
 The html in the div wrapperWithoutFooter should be replaced with the following:  
 Also, note the addition of the responsive image class to the div tag.
 
-
-The background image is a placeholder. 
-
-<div id="wrapperWithoutFooter" class="img-responsive" style="
-    background-image: url('https://www.enviroaccounting.com/TahoeTMDL/FileResource/GetFileResourceForProgram/2dbee84f-5583-469b-b1fd-594b2c720e15');
-    padding-top: 110px;
-    padding-bottom: 110px;
-    margin-bottom: -60px;
-    margin-top: -20px;
-    margin-left: 0px;
-    margin-right: 0px;
-"> 
+<div id="wrapperWithoutFooter" class="img-responsive">
+    
+     <p class="imageCreditLine">photo credit: Drone Promotions</p>
+</div>
 
 -->*/
 
@@ -33,9 +25,12 @@ The background image is a placeholder.
 
 #wrapperWithoutFooter {
 
+  position:relative;
 
 /*Image size on full desktop HD is : 1600x520    */
+
 	background-image: url('https://www.enviroaccounting.com/TahoeTMDL/FileResource/GetFileResourceForProgram/2dbee84f-5583-469b-b1fd-594b2c720e15');
+
     padding-top: 110px;
     padding-bottom: 110px;
     margin-bottom: -60px;
@@ -44,6 +39,14 @@ The background image is a placeholder.
     margin-right: 0px;
 
 
+
+}
+
+.imageCreditLine {
+    position:absolute;
+    bottom:0;
+    right:0;
+    font-style: italic;
 }
 
 .jumbotron {
