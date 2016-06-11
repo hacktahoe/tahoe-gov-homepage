@@ -1,11 +1,7 @@
 <script type="text/html" id="banner-code">
     <div id="homepage-banner">
-		<div id="wrapperWithoutFooter">
-			<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
-				<div class="container-fluid"></div>
-			</div><!-- Center Section w/ search bar
-
- <!- - Jumbotron - -> <div class="jumbotron"> <!- - <div class="container"> -->
+		<div id="wrapperWithoutFooter" class="img-responsive">
+           <!- - Jumbotron - -> <div class="jumbotron"> <!- - <div class="container"> -->
 			<div class="container" align="center">
 				<div class="jumbotron" align="center">
 					<div class="row dropdownOption" align="center">
@@ -70,12 +66,12 @@ function configureDropdowns() {
 
   var firstDropdownOptions = {
     'iAmA': ['I want to...'],
-    'homeowner':['I want to...', 'check my permit status', 'remove a tree', 'something else?'],
-    'realtor':['I want to...', 'search property info', 'submit BMP Disclosure Form','find IPES score','something else?'],
-    'contractor':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
-    'consultant':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else?'],
-    'businessOwner':['I want to...', 'file a business permit','submit a permit to update my sign','something else?'],
-    'citizen':['I want to...', 'learn more about Tahoe', 'file a complaint', 'report trash', 'something else?']};
+    'homeowner':['I want to...', 'check my permit status', 'remove a tree', 'something else'],
+    'realtor':['I want to...', 'search property info', 'submit BMP Disclosure Form','find IPES score','something else'],
+    'contractor':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else'],
+    'consultant':['I want to...', 'file a permit', 'check my permit status', 'schedule an inspection','something else'],
+    'businessOwner':['I want to...', 'file a business permit','submit a permit to update my sign','something else'],
+    'citizen':['I want to...', 'learn more about Tahoe', 'file a complaint', 'report trash', 'something else']};
 
   var firstDropdown = document.getElementById('firstDropdown');
   var secondaryDropdown = document.getElementById('secondDropdown');
@@ -98,14 +94,14 @@ function configureDropdowns() {
 
   secondaryDropdown.onchange = function() {
 		var _val = this.options[this.selectedIndex].value;
-		
+
 		if (_val == "something else?") {
 		 $('searchBarID').show();
 		} else {
 		 $('searchBarID').hide();
 		}
   };
-  
+
   //fire this to update secondaryDropdown on load
   firstDropdown.onchange();
 
@@ -163,9 +159,33 @@ $(function () {
 }
 
 #wrapperWithoutFooter {
-  min-height:100%;
   position:relative;
-  min-width: 100%;
+  /* image size on full desktop is 1600x520 */
+  background-image: url('https://www.enviroaccounting.com/TahoeTMDL/FileResource/GetFileResourceForProgram/2dbee84f-5583-469b-b1fd-594b2c720e15');
+  padding-top: 110px;
+  padding-bottom: 110px;
+  margin-bottom: -60px;
+  margin-top: -20px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.imageCreditLine {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-style: italic;
+}
+
+#homepage-banner img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen {
+  #homepage-banner img {
+    width: auto; /* for IE 8 */
+  }
 }
 
 select {
@@ -174,8 +194,10 @@ select {
 }
 
 .jumbotron {
-  background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 500px;
 }
 
 .jumbotron .container {
@@ -188,7 +210,6 @@ select {
   padding-right: 0;
   margin-bottom: 5px;
 }
-
 
 .searchBarPaddingDiv {
   padding-left: 0;
@@ -220,12 +241,10 @@ select {
 
 .btn-success {
   margin-top: 30px;
-
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-   font-weight: 300;
- height: 60px;
+  font-weight: 300;
+  height: 60px;
 }
-
 
 @media (min-width: 768px) {
   .container .jumbotron, .container-fluid .jumbotron {
@@ -233,4 +252,12 @@ select {
     padding-left: 0px;
     width: 60%;
 }
+
+@media (min-width: 414px) {
+  .container .jumbotron, .container-fluid .jumbotron {
+   padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+}
+
 </style>
