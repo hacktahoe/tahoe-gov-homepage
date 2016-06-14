@@ -1,9 +1,8 @@
 <script type="text/html" id="banner-code">
     <div id="homepage-banner">
 		<div id="wrapperWithoutFooter" class="img-responsive">
-           <!- - Jumbotron - -> <div class="jumbotron"> <!- - <div class="container"> -->
+			<p class="imageCreditLine">photo credit: Drone Promotions</p>
 			<div class="container" align="center">
-				<div class="jumbotron" align="center">
 					<div class="row dropdownOption" align="center">
 						<select id='firstDropdown' name='firstDropdown' class="col-lg-offset-3 col-lg-6 col-xs-3 col-xs-offset-3 col-md-offset-0 col-md-1 btn btn-default">
 							<option value='iAmA' selected='selected'>
@@ -53,7 +52,6 @@
 					<div class="row">
 						<button type="button" class="btn btn-success col-lg-2 col-lg-offset-5 col-xs-6 col-xs-offset-3 col-md-offset-2 col-md-6">Go!</button>
 					</div>
-				</div>
 			</div>
 		</div>
     </div>
@@ -161,7 +159,12 @@ $(function () {
 #wrapperWithoutFooter {
   position:relative;
   /* image size on full desktop is 1600x520 */
+   /* INSERT FILE PATH OF SVG IMAGE HERE */	
   background-image: url('https://www.enviroaccounting.com/TahoeTMDL/FileResource/GetFileResourceForProgram/2dbee84f-5583-469b-b1fd-594b2c720e15');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   padding-top: 110px;
   padding-bottom: 110px;
   margin-bottom: -60px;
@@ -171,10 +174,15 @@ $(function () {
 }
 
 .imageCreditLine {
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-filter: blur(30px);
   position: absolute;
   bottom: 0;
   right: 0;
   font-style: italic;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 30px;
 }
 
 #homepage-banner img {
@@ -193,22 +201,14 @@ select {
   margin-right: 20px;
 }
 
-.jumbotron {
-  background: rgba(0, 0, 0, 0.4);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  width: 500px;
-}
-
-.jumbotron .container {
-  height: 40%;
-  width: 30%;
-  padding-bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0;
-  padding-right: 0;
-  margin-bottom: 5px;
+.container {
+    background: rgba(0, 0, 0, 0.4);
+    padding-bottom: 20px;
+    -webkit-filter: blur(20px);
+    width: 60%;
+    margin: auto;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 30px;
 }
 
 .searchBarPaddingDiv {
@@ -240,21 +240,30 @@ select {
 
 
 .btn-success {
-  margin-top: 30px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
-  height: 60px;
+     margin-top: 30px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    height: 60px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: #2EE06E;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    color: white;
+    margin-bottom: 20px;
 }
 
+
 @media (min-width: 768px) {
-  .container .jumbotron, .container-fluid .jumbotron {
+  .container {
    padding-right: 0px;
     padding-left: 0px;
-    width: 60%;
+    max-width: 60%;
+    margin: auto;
 }
 
 @media (min-width: 414px) {
-  .container .jumbotron, .container-fluid .jumbotron {
+  .container {
    padding-right: 0px;
     padding-left: 0px;
     width: 100%;
